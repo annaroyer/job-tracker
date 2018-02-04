@@ -13,7 +13,6 @@ describe "User edits an existing job" do
   end
 
   scenario "a user can edit a job" do
-    Company.create!(name: "Cool Beans Coffee")
     company = Company.create!(name: "ESPN")
     job = company.jobs.create!(title: "Developer", level_of_interest: 70, city: "Denver")
     visit edit_company_job_path(company, job)
@@ -29,5 +28,6 @@ describe "User edits an existing job" do
     expect(page).to have_content("Make Tens of Dollars")
     expect(page).to have_content("70")
     expect(page).to have_content("Portland")
+    expect(page).to have_content("You updated Musician job at ESPN")
   end
 end
