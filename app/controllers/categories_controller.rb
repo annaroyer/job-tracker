@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
       flash[:success]="You created #{@category.title} category"
       redirect_to category_path(@category)
     else
-      render :new
+      redirect_to new_category_path
     end
   end
 
