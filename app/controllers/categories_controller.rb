@@ -1,5 +1,17 @@
 class CategoriesController < ApplicationController
   def new
-
+    @category = Category.new
   end
+
+  def create
+    @category = Category.create(category_params)
+    flash[:success] = "You created #{@category.title} category"
+    render @category
+  end
+
+  private
+
+    def category_params
+      params.require(:category).permit(:title)
+    end
 end
