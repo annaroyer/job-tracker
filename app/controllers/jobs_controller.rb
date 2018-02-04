@@ -35,7 +35,7 @@ class JobsController < ApplicationController
 
   def destroy
     @job.destroy
-
+    flash[:success] = "You deleted #{@job.title} job at #{@company.name}"
     redirect_to company_jobs_path(@company)
   end
 
