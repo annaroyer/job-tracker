@@ -4,7 +4,7 @@ describe "User edits an existing job" do
   scenario "a user can see the previous job information" do
     company = Company.create!(name: "ESPN")
     job = company.jobs.create!(title: "Developer", level_of_interest: 70, city: "Denver")
-    visit edit_company_job_path(job)
+    visit edit_company_job_path(company, job)
 
     expect(current_path).to eq(edit_job_path(job))
     expect(page).to have_field("Title", with: "Developer")
@@ -17,7 +17,7 @@ describe "User edits an existing job" do
     Company.create!(name: "Cool Beans Coffee")
     company = Company.create!(name: "ESPN")
     job = company.jobs.create!(title: "Developer", level_of_interest: 70, city: "Denver")
-    visit edit_company_job_path(job)
+    visit edit_company_job_path(company, job)
 
     fill_in "job[title]", with: "Musician"
     fill_in "job[description]", with: "Make Tens of Dollars"
