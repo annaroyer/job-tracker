@@ -10,7 +10,7 @@ describe 'As a user' do
       expect(page).to have_content(job.title)
       click_on 'Delete'
 
-      expect(current_path).to eq(company_job_path(company))
+      expect(current_path).to eq(company_jobs_path(company))
       expect(page).to_not have_content(job.title)
     end
   end
