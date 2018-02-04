@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
-  before_action :set_company, except: [:show, :destroy]
+  before_action :set_company, except: [:show]
 
   def index
     @jobs = @company.jobs
@@ -34,7 +34,9 @@ class JobsController < ApplicationController
   end
 
   def destroy
-    # implement on your own!
+    @job.destroy
+
+    redirect_to company_jobs_path(@company)
   end
 
   private
