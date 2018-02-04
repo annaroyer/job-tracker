@@ -12,6 +12,7 @@ describe 'As a user' do
 
       expect(current_path).to eq(company_jobs_path(company))
       expect(page).to_not have_content(job.title)
+      expect(page).to have_content("You deleted Developer job at ESPN")
     end
   end
 end
