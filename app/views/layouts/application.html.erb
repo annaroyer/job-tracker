@@ -10,11 +10,21 @@
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: name %>
   <% end %>
-  <header>
-    
-  </header>
 
-<%= yield %>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <section class="container-fluid">
+        <header class="navbar-header">
+          <%= link_to "Job Tracker", root_path, class: 'navbar-brand' %>
+        </header>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Home" %></li>
+          <li><%= link_to "Categories" %></li>
+          <li><%= link_to "Categories" %></li>
+        </ul>
+      </section>
+    </nav>
+
+      <%= yield %>
 
 </body>
 </html>
