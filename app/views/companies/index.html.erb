@@ -1,20 +1,11 @@
 <h1>Companies</h1>
 
-
-<main class="card-container container">
+<ul >
   <% @companies.each do |company| %>
-  <figure class="well card col-sm-3" class=company_<%= company.id %>>
-    </h1>
+    <li class=company_<%= company.id %>>
       <%= link_to company.name, company_path(company) %>
-    <h1>
-    <figcaption class="buttons">
-      <button type="button" class="btn">
-        <%= link_to "Edit", edit_company_path(company) %>
-      </button>
-      <button type="button" class="btn">
-        <%= link_to "Delete", company_path(company), method: "delete" %>
-      </button>
-    </figcaption>
-  </figure>
+      <%= link_to "Edit", edit_company_path(company) %>
+      <%= link_to "Delete", company_path(company), method: "delete" %>
+    </li>
   <% end %>
-</main>
+</ul>
