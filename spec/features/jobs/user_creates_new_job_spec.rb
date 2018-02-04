@@ -17,5 +17,6 @@ describe "User creates a new job" do
     expect(page).to have_content("Developer")
     expect(page).to have_content("80")
     expect(page).to have_content("Denver")
+    expect(page).to have_content("You created Developer job at ESPN")
   end
 end
