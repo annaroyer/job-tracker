@@ -1,0 +1,48 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ */
+@import "bootstrap-sprockets"
+@import "bootstrap"
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville|Raleway')
+
+$primary-font: 'Libre Baskerville', serif
+$secondary-font: 'Raleway', sans-serif
+$sailor-blue: #2E4A62
+$harbor-mist: #B4B7BA
+$coconut-milk: #F0EDE5
+$warm-sand: #C0AB8E
+
+.navbar-inverse
+  background-color: $sailor-blue
+
+h1
+  font: 100% $primary-font
+
+.card-container
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  background-color: $coconut-milk
+
+.card
+  font: 100% $secondary-font
+  display: flex
+  flex-direction: column
+  margin: 15px
+  padding: 45px 0px
+  align-items: center
+
+.jumbotron
+  display: flex
+  justify-content: center
+  background-color: $harbor-mist
