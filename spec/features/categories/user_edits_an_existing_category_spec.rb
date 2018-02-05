@@ -27,4 +27,15 @@ describe 'As a user' do
       end
     end
   end
+
+  context 'when I click edit from a category show page' do
+    it 'I see the category edit page' do
+      category = Category.create!(title: 'Education')
+
+      visit category_path(category)
+      click_on 'Edit'
+
+      expect(current_path).to eq(edit_category_path(category))
+    end
+  end
 end
