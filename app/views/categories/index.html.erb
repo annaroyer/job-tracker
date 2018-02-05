@@ -1,8 +1,9 @@
 <h1>Categories</h1>
 <ul>
   <% @categories.each do |category| %>
-  <li>
+  <li class=category_<%= category.id %>>
     <%= link_to category.title, category_path(category) %>
+    <%= link_to "Delete", category_path(category), method: "delete", data: {confirm: 'Are you sure?'} %>
   </li>
   <% end %>
 </ul>
