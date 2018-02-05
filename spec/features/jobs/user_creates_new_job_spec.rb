@@ -12,9 +12,8 @@ describe 'As a user' do
       fill_in 'job[description]', with: 'So fun!'
       fill_in 'job[level_of_interest]', with: 80
       fill_in 'job[city]', with: 'Denver'
-      select(category.title, from: 'job[category]')
+      select(category.title, from: 'job[category_id]')
       click_button 'Create'
-
 
       expect(current_path).to eq(company_job_path(company, 1))
       expect(page).to have_content('ESPN')
