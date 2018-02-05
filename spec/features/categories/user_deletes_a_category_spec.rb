@@ -16,7 +16,10 @@ describe 'As a user' do
 
       expect(current_path).to eq(categories_path)
       expect(page).to have_content(category_1.title)
-      expect(page).to_not have_content(category_2.title)
+      expect(page).to have_content("You deleted #{category_2.title} category")
+      within 'ul' do
+        expect(page).to_not have_content(category_2.title)
+      end
     end
   end
 end
