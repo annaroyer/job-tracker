@@ -27,6 +27,15 @@ class CategoriesController < ApplicationController
     redirect_to categories_path
   end
 
+  def edit
+  end
+
+  def update
+    @category.update(category_params)
+    flash[:success] = "You edited #{@category.title} category"
+    redirect_to @category
+  end
+  
   private
 
     def category_params
