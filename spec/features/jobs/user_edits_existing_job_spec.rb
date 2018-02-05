@@ -3,7 +3,8 @@ require "rails_helper"
 describe "User edits an existing job" do
   scenario "a user can see the previous job information" do
     company = Company.create!(name: "ESPN")
-    job = company.jobs.create!(title: "Developer", level_of_interest: 70, city: "Denver")
+    category = Category.create!(title: 'sports analytics')
+    job = company.jobs.create!(title: "Developer", level_of_interest: 70, city: "Denver", category: category)
     visit edit_company_job_path(company, job)
 
     expect(page).to have_field("Title", with: "Developer")
@@ -14,7 +15,8 @@ describe "User edits an existing job" do
 
   scenario "a user can edit a job" do
     company = Company.create!(name: "ESPN")
-    job = company.jobs.create!(title: "Developer", level_of_interest: 70, city: "Denver")
+    category = Category.create!(title: 'sports analytics')
+    job = company.jobs.create!(title: "Developer", level_of_interest: 70, city: "Denver", category: category)
     visit edit_company_job_path(company, job)
 
     fill_in "job[title]", with: "Musician"
