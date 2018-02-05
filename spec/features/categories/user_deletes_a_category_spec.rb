@@ -33,7 +33,9 @@ describe 'As a user' do
         click_on "Delete"
 
         expect(current_path).to eq(categories_path)
-        expect(page).to_not have_content(category_1.title)
+        within 'li' do
+          expect(page).to_not have_content(category_1.title)
+        end
         expect(page).to have_content(category_2.title)
       end
     end
