@@ -3,6 +3,7 @@
   <% @categories.each do |category| %>
   <li class=category_<%= category.id %>>
     <%= link_to category.title, category_path(category) %>
+    <%= link_to "Delete", categories_path, method: :delete, data: {confirm: 'Are you sure?'} %>
   </li>
   <% end %>
 </ul>
