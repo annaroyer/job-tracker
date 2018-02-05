@@ -18,7 +18,7 @@ describe 'As a user' do
       visit categories_path
       click_on 'Edit'
       fill_in 'category[title]', with: 'Web Development'
-      click_on 'Edit Category'
+      click_on 'Update Category'
 
       expect(current_path).to eq(category_path(category))
       expect(page).to have_content('You edited Web Development category')
