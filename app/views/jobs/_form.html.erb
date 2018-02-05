@@ -21,7 +21,8 @@
     <%= f.text_field :city %>
   </p>
   <p>
-    <%= f.collection_select(:category_id, @categories, :id, :name) %>
+    <%= f.label :category %>
+    <%= f.collection_select(:category, @categories, :id, :title) %>
   </p>
   <p>
     <%= f.submit %>
