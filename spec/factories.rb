@@ -21,7 +21,7 @@ FactoryBot.define do
   end
 
   factory :contact do
-    full_name "Paige Santorini"
+    full_name "Penelope Santorini"
     position "Hiring Manager"
     email "paige@wooo.com"
     company
