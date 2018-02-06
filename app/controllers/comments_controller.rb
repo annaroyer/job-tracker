@@ -1,10 +1,9 @@
 class CommentsController < ApplicationController
-  def index
-
-  end
 
   def create
-    @comment = Comment.create(comment_params)
+    @job = Job.find(params[:job_id])
+    @job.comments.create(comment_params)
+    redirect_to job_path(@job)
   end
 
   private
