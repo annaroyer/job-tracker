@@ -1,0 +1,13 @@
+<%= form_for @comment do |f| %>
+  <ul>
+    <% @category.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+  <p>
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
