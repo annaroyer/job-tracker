@@ -2,6 +2,21 @@ require 'rails_helper'
 
 describe 'As a user' do
   context 'when I visit new company job and fill in the information' do
+    scenario 'I can see a form to create a new job' do
+      company = Company.create!(name: 'ESPN')
+      category = Category.create!(title: 'Education')
+      Category.create!(title: 'Technology')
+
+      visit new_company_job_path(company)
+
+      expect(page).to have_field('Title')
+      expect(page).to have_field('Description')
+      expect(page).to have_field('Level of interest')
+      expect(page).to have_field('City')
+      expect(page).to have_select('Category', with_options: ['Education', 'Technology'])
+      expect(page).to have_link('Create a New Category')
+    end
+
     scenario 'I can create a new job' do
       company = Company.create!(name: 'ESPN')
       category = Category.create!(title: 'Education')
