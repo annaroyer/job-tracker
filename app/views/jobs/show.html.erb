@@ -14,7 +14,16 @@ Category: <%= link_to @job.category.title, category_path(@job.category) %>
 Company: <%= link_to @job.company.name, company_path(@job.company) %>
 
 <h2>Comments:</h2>
-<%= form_for @comments do |f| %>
-  <%= f.text_area :content %>
-  <%= f.submit %>
+<%= form_for @comment do |f| %>
+  <ul>
+    <% @category.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+  <p>
+    <%= f.text_area :content %>
+  </p>
+  <p>  
+    <%= f.submit %>
+  </p>
 <% end %>
