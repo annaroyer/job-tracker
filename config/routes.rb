@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :companies, shallow: true do
     resources :jobs
-    resources :contacts
+    resources :contacts, only: [:create]
   end
 
   resources :categories
