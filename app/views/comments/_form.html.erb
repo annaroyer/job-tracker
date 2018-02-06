@@ -1,6 +1,6 @@
-<%= form_for @comment do |f| %>
+<%= form_for [@job, @comment] do |f| %>
   <ul>
-    <% @category.errors.full_messages.each do |error| %>
+    <% @comment.errors.full_messages.each do |error| %>
       <li><%= error %></li>
     <% end %>
   </ul>
