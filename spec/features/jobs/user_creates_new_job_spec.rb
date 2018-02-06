@@ -4,8 +4,8 @@ describe 'As a user' do
   context 'when I visit new company job and fill in the information' do
     scenario 'I can see a form to create a new job' do
       company = Company.create!(name: 'ESPN')
-      category = Category.create!(title: 'Education')
-      Category.create!(title: 'Technology')
+      category_1 = Category.create!(title: 'Education')
+      category_2 = Category.create!(title: 'Technology')
 
       visit new_company_job_path(company)
 
@@ -13,7 +13,7 @@ describe 'As a user' do
       expect(page).to have_field('Description')
       expect(page).to have_field('Level of interest')
       expect(page).to have_field('City')
-      expect(page).to have_select('Category', with_options: ['Education', 'Technology'])
+      expect(page).to have_select('Category', with_options: [category_1.title, category_2.title])
       expect(page).to have_link('Create a New Category')
     end
 
@@ -30,7 +30,6 @@ describe 'As a user' do
       select(category.title, from: 'job[category_id]')
       click_button 'Create'
 
-      expect(current_path).to eq(company_job_path(company, 1))
       expect(page).to have_content('ESPN')
       expect(page).to have_content('Developer')
       expect(page).to have_content('80')
