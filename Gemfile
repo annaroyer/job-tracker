@@ -45,6 +45,7 @@ group :development, :test do
   gem 'pry'
   gem 'launchy'
   gem 'database_cleaner'
+  gem 'factory_bot_rails', '~>4.0'
 end
 
 group :development do
