@@ -24,6 +24,6 @@ FactoryBot.define do
     full_name "Penelope Santorini"
     position "Hiring Manager"
     email "paige@wooo.com"
-    company
+    association :company
   end
 end
