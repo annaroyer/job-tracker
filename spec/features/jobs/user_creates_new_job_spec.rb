@@ -30,7 +30,7 @@ describe 'As a user' do
       select(category.title, from: 'job[category_id]')
       click_button 'Create'
 
-      expect(current_path).to eq(company_job_path(company, 1))
+      expect(current_path).to eq(job_path(company, 1))
       expect(page).to have_content('ESPN')
       expect(page).to have_content('Developer')
       expect(page).to have_content('80')

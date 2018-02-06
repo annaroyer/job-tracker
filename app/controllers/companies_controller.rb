@@ -19,7 +19,7 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    redirect_to company_job_path(@company)
+    redirect_to job_path(@company)
   end
 
   def edit
