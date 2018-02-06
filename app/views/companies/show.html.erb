@@ -6,3 +6,4 @@ All Jobs for <strong><%= @company.name %></strong>
 
 <h1>Create a New Contact</h1>
 <%= render partial: 'contacts/form' %>
+<%= render partial: 'contact', collection: @company.contacts %>

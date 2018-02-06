@@ -1,7 +1,7 @@
-<h1>@contact.full_name</h1>
+<h1><%= contact.full_name %></h1>
 <p>
-  @contact.position
+  <%= contact.position %>
 </p>
 <p>
-  <%=  link_to @contact.email, "mailto:#{@contact.email}" %>
+  <%=  link_to contact.email, "mailto:#{contact.email}" %>
 </p>
