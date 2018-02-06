@@ -1,5 +1,5 @@
 class AddJobIdToComments < ActiveRecord::Migration[5.1]
   def change
-    add_column :comments, :references, :job
+    add_reference :comments, :job, foreign_key: true
   end
 end
