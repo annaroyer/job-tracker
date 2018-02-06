@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 describe 'As a user' do
+  before(:each) do
+    @category_1 = create(:category)
+    @category_2 = create(:category)
+  end
   context 'when I click delete on a category on the category index' do
-    before(:each) do
-      @category_1 = create(:category)
-      @category_2 = create(:category)
-    end
     it 'I can delete that category' do
       visit categories_path
       expect(page).to have_content(@category_1.title)
@@ -31,7 +31,7 @@ describe 'As a user' do
       within 'li' do
         expect(page).to_not have_content(@category_1.title)
       end
-      expect(page).to have_content("You deleted #{@category_2.title} category")
+      expect(page).to have_content("You deleted #{@category_1.title} category")
       expect(page).to have_content(@category_2.title)
     end
   end
