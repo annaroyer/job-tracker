@@ -4,7 +4,6 @@ class CreateContacts < ActiveRecord::Migration[5.1]
       t.string :full_name
       t.string :position
       t.string :email
-      t.references :job, foreign_key: true
 
       t.timestamps
     end
