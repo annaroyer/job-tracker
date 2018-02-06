@@ -16,13 +16,14 @@ describe 'As a user' do
     context 'when I create a category that already exists' do
       it 'I am brought back to the new category form page' do
         Category.create!(title: 'Education')
-        
+
         visit new_category_path
 
         fill_in 'category[title]', with: 'Education'
         click_on 'Create Category'
 
-        expect(current_path).to eq(new_category_path)
+        expect(page).to have_content('Create a New Category')
+        expect(page).to have_field('Title', with: 'Education')
       end
     end
   end

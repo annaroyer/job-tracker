@@ -1,6 +1,7 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
   before_action :set_company, except: [:show]
+  before_action :set_categories, only: [:new, :create, :edit]
 
   def index
     @jobs = @company.jobs
@@ -24,7 +25,6 @@ class JobsController < ApplicationController
   end
 
   def edit
-    # implement on your own!
   end
 
   def update
@@ -42,7 +42,7 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:title, :description, :level_of_interest, :city)
+    params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id)
   end
 
   def set_job
@@ -51,5 +51,9 @@ class JobsController < ApplicationController
 
   def set_company
     @company = Company.find(params[:company_id])
+  end
+
+  def set_categories
+    @categories = Category.all
   end
 end
