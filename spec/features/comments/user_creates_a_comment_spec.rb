@@ -7,11 +7,11 @@ describe 'As a user' do
       category = Category.create!(title: 'sports analytics')
       job = company.jobs.create!(title: "Developer", level_of_interest: 70, city: "Denver", category: category)
 
-      visit job_path(company, job)
-      fill_in 'Comments', with: 'Interview on Friday'
+      visit job_path(job)
+      fill_in 'comment[content]', with: 'Interview on Friday'
       click_on 'Create'
 
-      expect(page).to have_content('Interview on Friday') 
+      expect(page).to have_content('Interview on Friday')
     end
   end
 end
