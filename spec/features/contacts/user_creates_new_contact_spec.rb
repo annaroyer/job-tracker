@@ -9,7 +9,7 @@ describe 'As a user' do
       fill_in 'contact[full_name]', with: 'Betty Sang'
       fill_in 'contact[position]', with: 'Producer'
       fill_in 'contact[email]', with: 'bspro@espn.org'
-      click_on 'submit'
+      click_on 'Create Contact'
 
       expect(page).to have_content('Betty Sang')
       expect(page).to have_content('Producer')
