@@ -11,4 +11,12 @@ class Job < ApplicationRecord
   def self.sort(parameter)
     order(attribute_alias[parameter])
   end
+
+  def self.by_interest_level
+    order(:level_of_interest).group(:level_of_interest).count
+  end
+
+  def self.by_location
+    group(:city).count
+  end
 end
