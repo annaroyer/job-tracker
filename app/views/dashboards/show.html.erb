@@ -1,0 +1,21 @@
+<h1>Jobs by Interest Level</h1>
+<table>
+  <tr>
+    <td>
+      Interest Level
+    </td>
+    <td>
+      Job Count
+    </td>
+  </tr>
+    <% @jobs.by_interest_level.each do |interest, count| %>
+      <tr>
+        <td>
+          <%= interest %>
+        </td>
+        <td>
+          <%= count %>
+        </td>
+      </tr>
+    <% end %>
+</table>
