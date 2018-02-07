@@ -23,11 +23,31 @@
         </ul>
       </section>
     </nav>
-    <main>
+
+    <div class='container-fluid'>
+      <div class='row'>
+        <nav class="col-md-2 sidebar">
+          <section class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li><%= link_to "Dashboard" %></li>
+              <li><%= link_to "Companies" %></li>
+              <li><%= link_to "Categories" %></li>
+            </ul>
+          </section>
+        </nav>
+        <main class="main-content">
+
+
+
+
+
+
+
 
 
       <%= yield %>
-
-    </main>
+      </main>
+    </div>
+  </div>
 </body>
 </html>
