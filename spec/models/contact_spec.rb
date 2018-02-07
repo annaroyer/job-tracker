@@ -40,7 +40,7 @@ describe Contact, type: :model do
 
   describe 'relationships' do
     it 'belongs to a company' do
-      contact =  @company.contacts.new(full_name: 'Penelope Santorini', position: 'Hiring Manager', email: 'penelope@wooo.com')
+      contact = build(:contact)
 
       expect(contact).to respond_to(:company)
     end
