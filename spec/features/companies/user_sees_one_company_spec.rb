@@ -5,7 +5,7 @@ describe 'As a user' do
     scenario 'I can see that company' do
       company = create(:company)
 
-      visit company_jobs_path(company)
+      visit company_path(company)
 
       expect(page).to have_content(company.name)
     end
