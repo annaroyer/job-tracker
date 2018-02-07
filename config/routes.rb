@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'companies#index'
 
-  get '/dashboard', to: 'application#dashboard'
+  get '/dashboard', to: 'dashboards#show'
 
   resources :companies, shallow: true do
     resources :jobs, except: [:show, :index]
