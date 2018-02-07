@@ -4,8 +4,7 @@ class JobsController < ApplicationController
   before_action :set_categories, only: [:new, :create, :edit]
 
   def index
-    @parameter = params[:sort]
-    @jobs = Job.sort(@parameter)
+    @jobs = Job.sort(params[:sort])
   end
 
   def new
