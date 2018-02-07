@@ -11,7 +11,7 @@
     <%= content_tag :div, msg, class: name %>
   <% end %>
 
-    <!-- <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
       <section class="container-fluid">
         <header class="navbar-header">
           <%= link_to "Job Tracker", root_path, class: 'navbar-brand' %>
@@ -22,9 +22,12 @@
           <li><%= link_to "Categories" %></li>
         </ul>
       </section>
-    </nav> -->
+    </nav>
+    <main>
+
 
       <%= yield %>
 
+    </main>
 </body>
 </html>
