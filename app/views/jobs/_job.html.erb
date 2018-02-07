@@ -1,0 +1,23 @@
+<ul>
+  <li>
+    <%= link_to job.title, job_path(job) %>
+    <p>
+      <%= job.company.name %>
+    </p>
+    <p>
+      <%= job.city %>
+    </p>
+    <p>
+      category: <%= job.category.title %>
+    </p>
+    <p>
+      interest level: <%= job.level_of_interest %>
+    </p>
+  </li>
+  <li>
+    <%= link_to 'Edit', edit_job_path(job) %>
+  </li>
+  <li>
+    <%= link_to 'Delete', job_path(job), method: :delete, data: {confirm: "Really delete the job?"} %>
+  </li>
+</ul>

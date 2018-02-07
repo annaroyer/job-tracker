@@ -1,15 +1,5 @@
-All Jobs for <strong><%= @company.name %></strong>
-
-<% @jobs.each do |job| %>
-  <ul>
-    <li>
-      <%= link_to job.title, job_path(@company, job) %>
-    </li>
-    <li>
-      <%= link_to 'Edit', edit_job_path(@company, job) %>
-    </li>
-    <li>
-      <%= link_to 'Delete', job_path(@company, job), method: :delete, data: {confirm: "Really delete the job?"} %>
-    </li>
-  </ul>
-<% end %>
+<h1>All Jobs</h1>
+<p>
+  Sorted By: <%= @parameter %>
+</p>
+<%= render partial: 'job', collection: @jobs %>
