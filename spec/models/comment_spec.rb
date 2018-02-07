@@ -4,9 +4,7 @@ describe Comment, type: :model do
   describe 'validations' do
     context 'invalid attributes' do
       it 'is invalid without content' do
-        company = Company.create!(name: 'ESPN')
-        category = Category.create!(title: 'sports')
-        job = Job.create!(title: 'sports analyst', description: 'fun', level_of_interest: '60',category: category, company: company, city: 'Denver')
+        job = create(:job)
         comment = job.comments.new
 
         expect(comment).to be_invalid
@@ -20,10 +18,8 @@ describe Comment, type: :model do
     end
 
     context 'valid attributes' do
-      it 'is valid with content' do
-        company = Company.create!(name: 'ESPN')
-        category = Category.create!(title: 'sports')
-        job = Job.create!(title: 'sports analyst', description: 'fun', level_of_interest: '60',category: category, company: company, city: 'Denver')
+      it 'is valid with content and a job' do
+        job = create(:job)
         comment = job.comments.new(content: 'looks great')
 
         expect(comment).to be_valid
@@ -33,10 +29,7 @@ describe Comment, type: :model do
 
   describe 'relationships' do
     it 'belongs to a job' do
-      company = Company.create!(name: 'ESPN')
-      category = Category.create!(title: 'sports')
-      job = Job.create!(title: 'sports analyst', description: 'fun', level_of_interest: '60',category: category, company: company, city: 'Denver')
-      comment = job.comments.new
+      comment = build(:comment)
 
       expect(comment).to respond_to(:job)
     end
