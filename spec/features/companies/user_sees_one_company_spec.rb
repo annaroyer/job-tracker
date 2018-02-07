@@ -1,15 +1,13 @@
 require 'rails_helper'
 
-describe "User sees one company" do
-  scenario "a user sees a company" do
-    company = Company.create!(name: "ESPN")
-    Category.create!(title: 'sports analytics')
-    company.jobs.create!(title: "Developer", level_of_interest: 90, city: "Denver", category_id: 1)
+describe 'As a user' do
+  context 'when I visit companies index and click on a company' do
+    scenario 'I can see that company' do
+      company = create(:company)
 
-    visit company_jobs_path(company)
+      visit company_jobs_path(company)
 
-    expect(current_path).to eq("/companies/#{company.id}/jobs")
-    expect(page).to have_content("ESPN")
-    expect(page).to have_content("Developer")
+      expect(page).to have_content(company.name)
+    end
   end
 end

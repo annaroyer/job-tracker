@@ -1,34 +1,35 @@
-require "rails_helper"
+require 'rails_helper'
 
-describe "User edits an existing job" do
-  scenario "a user can see the previous job information" do
-    company = Company.create!(name: "ESPN")
-    category = Category.create!(title: 'sports analytics')
-    job = company.jobs.create!(title: "Developer", level_of_interest: 70, city: "Denver", category: category)
-    visit edit_job_path(job)
+describe 'As a user' do
+  context 'when I visit company jobs page and click edit on a job'
+  before(:each) { @job = create(:job) }
+    scenario 'I can see a form prepopulated with the previous job information' do
+      visit company_jobs_path(@job.company, @job)
+      click_on 'Edit'
 
-    expect(page).to have_field("Title", with: "Developer")
-    expect(page).to have_field("Description")
-    expect(page).to have_field("Level of interest", with: "70")
-    expect(page).to have_field("City", with: "Denver")
-  end
+      expect(page).to have_field('Title', with: @job.title)
+      expect(page).to have_field('Description', with: @job.description)
+      expect(page).to have_field('Level of interest', with: @job.level_of_interest)
+      expect(page).to have_field('City', with: @job.city)
+      expect(page).to have_select('Category', with_selected: @job.category.title)
+    end
 
-  scenario "a user can edit a job" do
-    company = Company.create!(name: "ESPN")
-    category = Category.create!(title: 'sports analytics')
-    job = company.jobs.create!(title: "Developer", level_of_interest: 70, city: "Denver", category: category)
-    visit edit_job_path(company, job)
+  scenario 'I can edit that job' do
+    category = create(:category)
+    visit edit_job_path(@job)
 
-    fill_in "job[title]", with: "Musician"
-    fill_in "job[description]", with: "Make Tens of Dollars"
-    fill_in "job[level_of_interest]", with: "70"
-    fill_in "job[city]", with: "Portland"
-    click_button "Update"
+    fill_in 'job[title]', with: 'Musician'
+    fill_in 'job[description]', with: 'Make Tens of Dollars'
+    fill_in 'job[level_of_interest]', with: '70'
+    fill_in 'job[city]', with: 'Portland'
+    select(category.title, from: 'job[category_id]')
+    click_button 'Update Job'
 
-    expect(page).to have_content("Musician")
-    expect(page).to have_content("Make Tens of Dollars")
-    expect(page).to have_content("70")
-    expect(page).to have_content("Portland")
-    expect(page).to have_content("You updated Musician job at ESPN")
+    expect(page).to have_content('Musician')
+    expect(page).to have_content('Make Tens of Dollars')
+    expect(page).to have_content('70')
+    expect(page).to have_content('Portland')
+    expect(page).to have_content(category.title)
+    expect(page).to have_content("You updated Musician job at #{@job.company.name}")
   end
 end
