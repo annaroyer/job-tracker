@@ -1,15 +1,19 @@
 require 'rails_helper'
 
-describe "User sees a specific job" do
-  scenario "a user sees a job for a specific company" do
-    company = Company.create!(name: "ESPN")
-    category = Category.create!(title: 'sports analytics')
-    job = company.jobs.create!(title: "Developer", level_of_interest: 70, city: "Denver", category: category)
+describe 'As a user' do
+  context 'when I visit a company show and click on a job' do
+    scenario 'I can see a that job' do
+      job = create(:job)
 
-    visit job_path(company, job)
+      visit company_jobs_path(job.company, job)
+      click_on job.title
 
-    expect(page).to have_content("ESPN")
-    expect(page).to have_content("Developer")
-    expect(page).to have_content("70")
+      expect(page).to have_content(job.company.name)
+      expect(page).to have_content(job.title)
+      expect(page).to have_content(job.description)
+      expect(page).to have_content(job.level_of_interest)
+      expect(page).to have_content(job.city)
+      expect(page).to have_content(job.category.title)
+    end
   end
 end

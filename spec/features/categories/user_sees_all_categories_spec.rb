@@ -3,15 +3,13 @@ require 'rails_helper'
 describe 'As a user' do
   context 'when I visit categories index' do
     it 'I can see all categories' do
-      Category.create!(title: 'Web Development')
-      Category.create!(title: 'Education')
-      Category.create!(title: 'Finance')
+      categories = create_list(:category, 5)
 
       visit categories_path
 
-      expect(page).to have_content('Web Development')
-      expect(page).to have_content('Education')
-      expect(page).to have_content('Finance')
+      categories.each do |category|
+        expect(page).to have_link(category.title)
+      end
     end
   end
 end

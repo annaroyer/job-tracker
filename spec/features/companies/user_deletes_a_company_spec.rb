@@ -1,14 +1,16 @@
 require 'rails_helper'
 
-describe "User deletes existing company" do
-  scenario "a user can delete a company" do
-    company = Company.create(name: "ESPN")
-    visit companies_path
+describe 'As a user' do
+  before(:each) { @company = create(:company) }
+  context 'when I visit company index and click delete on a company' do
+    scenario 'I can delete that company' do
+      visit companies_path
+      expect(page).to have_content(@company.name)
 
-    within(".company_#{company.id}") do
-      click_link "Delete"
+      within('.company_1') { click_link 'Delete' }
+
+      expect(page).to have_content("#{@company.name} was successfully deleted!")
+      within('ul') { expect(page).to_not have_content(@company.name) }
     end
-
-    expect(page).to have_content("ESPN was successfully deleted!")
   end
 end
