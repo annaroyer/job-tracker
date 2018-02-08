@@ -26,6 +26,4 @@ describe 'As a user' do
       end
     end
   end
-
-
 end
