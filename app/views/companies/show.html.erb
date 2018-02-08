@@ -1,7 +1,7 @@
 <div class="company-show">
   <div class="company-jobs">
     <header class="well">
-      <h1>All Jobs for <strong><%= @company.name %></strong></h1>
+      <h4>All Jobs for <strong><%= @company.name %></strong></h4>
     </header>
     <section class="card-container">
       <%= render partial: 'jobs/job', collection: @company.jobs %>
