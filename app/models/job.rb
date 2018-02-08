@@ -1,7 +1,7 @@
 class Job < ApplicationRecord
   validates_presence_of :title, :description, :level_of_interest, :city, :company
   belongs_to :company
-  belongs_to :category, optional: true
+  belongs_to :category
   has_many :comments, dependent: :destroy
 
   def self.attribute_alias
