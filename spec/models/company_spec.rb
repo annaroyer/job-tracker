@@ -31,4 +31,18 @@ describe Company do
       end
     end
   end
+
+  describe 'instance methods' do
+    context '#average_interest' do
+      it "returns a company's job's average interest level" do
+        company = create(:company)
+        create(:job, company: company, level_of_interest: 50)
+        create(:job, company: company, level_of_interest: 40)
+        create(:job, company: company, level_of_interest: 40)
+        create(:job, company: company, level_of_interest: 70)
+
+        expect(company.average_interest).to eq(50)
+      end
+    end
+  end
 end
