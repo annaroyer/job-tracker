@@ -4,8 +4,13 @@ class Company < ApplicationRecord
   has_many :contacts, dependent: :destroy
 
   def self.top_average_interest_level
-    jobs
+    joins(:jobs)
     .group(:id)
-    .average(:level_of_interest)
+    .order("avg(level_of_interest) DESC")
+    .limit(3)
+  end
+
+  def average_interest
+    jobs.average(:level_of_interest)
   end
 end
