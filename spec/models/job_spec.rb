@@ -2,64 +2,50 @@ require 'rails_helper'
 
 describe Job do
   describe 'validations' do
-    before(:each) do
-      @company = create(:company)
-      @category = create(:category)
-    end
-    context 'invalid attributes' do
-      it 'is invalid without a title' do
-        job = Job.new(level_of_interest: 80, description: 'Wahoo', city: 'Denver', company: @company, category: @category)
-        expect(job).to be_invalid
-      end
-
-      it 'is invalid without a level of interest' do
-        job = Job.new(title: 'Developer', description: 'Wahoo', city: 'Denver', company: @company, category: @category)
-        expect(job).to be_invalid
-      end
-
-      it 'is invalid without a city' do
-        job = Job.new(title: 'Developer', description: 'Wahoo', level_of_interest: 80, company: @company, category: @category)
-        expect(job).to be_invalid
-      end
-
-      it 'is invalid without a company' do
-        category = Category.create!(title: 'Education')
-        job = Job.new(title: 'Developer', description: 'Wahoo', level_of_interest: 80, category: @category)
-        expect(job).to be_invalid
-      end
-
-      it 'is invalid without a category' do
-        company = Company.create!(name: 'Turing')
-        job = Job.new(title: 'Developer', description: 'Wahoo', level_of_interest: 80, company: @company)
-        expect(job).to be_invalid
-      end
-    end
-
-    context 'valid attributes' do
-      it 'is valid with a title, level of interest, a company, and a category' do
-        job = Job.new(title: 'Developer', level_of_interest: 40, city: 'Denver', company: @company, category: @category)
-        expect(job).to be_valid
-      end
-    end
+    it { should validate_presence_of :title }
+    it { should validate_presence_of :description }
+    it { should validate_presence_of :level_of_interest }
+    it { should validate_presence_of :city }
+    it { should validate_presence_of :company }
   end
 
   describe 'relationships' do
-    it 'belongs to a company' do
-      job = build(:job)
-      expect(job).to respond_to(:company)
-    end
+    it { should belong_to :company }
+    it { should belong_to :category }
+    it { should have_many :comments }
   end
 
   describe 'class methods' do
+    before(:each) do
+      @job_1 = create(:job, city: 'San Francisco', level_of_interest: 90)
+      @job_2 = create(:job, city: 'Denver', level_of_interest: 40)
+      @job_3 = create(:job, city: 'New York', level_of_interest: 10)
+      @job_4 = create(:job, city: 'Atlanta', level_of_interest: 50)
+    end
     describe '.sort' do
       it 'sorts all jobs by location or interest level' do
-        job_1 = create(:job, city: 'San Francisco', level_of_interest: 90)
-        job_2 = create(:job, city: 'Denver', level_of_interest: 40)
-        job_3 = create(:job, city: 'New York', level_of_interest: 10)
-        job_4 = create(:job, city: 'Atlanta', level_of_interest: 50)
+        expect(Job.sort(:location)).to eq([@job_4, @job_2, @job_3, @job_1])
+        expect(Job.sort(:interest)).to eq([@job_3, @job_2, @job_4, @job_1])
+      end
+    end
 
-        expect(Job.sort(:location)).to eq([job_4, job_2, job_3, job_1])
-        expect(Job.sort(:interest)).to eq([job_3, job_2, job_4, job_1])
+    describe '.by_interest_level' do
+      it 'counts the number of jobs at each interest level' do
+        create_list(:job, 2, level_of_interest: 10)
+        create_list(:job, 3, level_of_interest: 50)
+        create(:job, level_of_interest: 90)
+
+        expect(Job.by_interest_level).to eq({10 => 3, 40 => 1, 50 => 4, 90=>2})
+      end
+    end
+
+    describe '.by_location' do
+      it 'counts the number of jobs in each city' do
+        create_list(:job, 2, city: 'San Francisco')
+        create_list(:job, 3, city: 'Atlanta')
+        create(:job, city: 'New York')
+
+        expect(Job.by_location).to eq({'San Francisco' => 3, 'Atlanta' => 4, 'New York' => 2, 'Denver' => 1})
       end
     end
   end
