@@ -22,7 +22,7 @@ $harbor-mist: #B4B7BA;
 $coconut-milk: #F0EDE5;
 $warm-sand: #C0AB8E;
 $well-border: 5px double $sailor-blue;
-$button-border: 5px solid $coconut-milk;
+$button-border: 3px solid $coconut-milk;
 
 .row.content {
   height: 1000px;
@@ -57,6 +57,7 @@ h5 {
 a, p, td {
   color: $sailor-blue;
   font-family: $secondary-font;
+  text-decoration: none;
 }
 
 .sidenav {
@@ -99,9 +100,6 @@ a, p, td {
     a {
       align-self: flex-end;
     }
-    button {
-      // background-color: $coconut-milk;
-    }
   }
 }
 
@@ -142,6 +140,7 @@ a, p, td {
   padding: 5px;
   a {
     color: $coconut-milk;
+    text-decoration: none;
   }
   a:hover {
     color: $coconut-milk;
@@ -149,7 +148,7 @@ a, p, td {
 }
 
 button:hover {
-  border: 5px solid $harbor-mist;
+  border: 3px solid $harbor-mist;
 }
 
 td, th {
