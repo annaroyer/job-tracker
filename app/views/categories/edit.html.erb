@@ -7,3 +7,4 @@
 </div>
 
 <h4><button><%= link_to "<< Back To Categories", categories_path %></button></h4>
+<h4><button><%= link_to "<< Back To #{@category.title}", category_path(@category) %></button></h4>
