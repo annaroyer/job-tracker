@@ -1,14 +1,12 @@
-<%= form_for @category do |f| %>
-  <ul>
-    <% @category.errors.full_messages.each do |error| %>
-      <li><%= error %></li>
-    <% end %>
-  </ul>
-  <p>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<figure class="well form-group">
+  <%= form_for @category do |f| %>
+    <ul>
+      <% @category.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+    <h5><%= f.label :title %></h5>
+    <%= f.text_field :title, class: "form-control" %>
+    <%= f.submit class: "btn  btn-block" %>
+  <% end %>
+</figure>

@@ -1,3 +1,9 @@
-<h2>Edit <%= @company.name %> here!</h2>
+<section class="well">
+  <h1>Update <%= @company.name %></h1>
+</section>
 
-<%= render partial: "form" %>
+<div class="card-container">
+  <%= render partial: "form" %>
+</div>
+
+<h4><button><%= link_to "<< Back to Companies", companies_path %></button></h4>

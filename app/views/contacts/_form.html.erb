@@ -1,9 +1,28 @@
-<%= form_for [@company, @contact] do |f| %>
-  <%= f.label :full_name, 'Full Name' %>
-  <%= f.text_field :full_name %>
-  <%= f.label :position %>
-  <%= f.text_field :position %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-  <%= f.submit %>
-<% end %>
+<figure class="well">
+  <%= form_for [@company, @contact] do |f| %>
+    <ul>
+      <% @contact.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+      <% end %>
+    </ul>
+    <h5>
+      <%= f.label :full_name, 'Full Name' %>
+    </h5>
+    <p>
+      <%= f.text_field :full_name, class: "form-control" %>
+    </p>
+    <h5>
+      <%= f.label :position %>
+    </h5>
+    <p>
+      <%= f.text_field :position, class: "form-control" %>
+    </p>
+    <h5>
+      <%= f.label :email %>
+    </h5>
+    <p>
+      <%= f.email_field :email, class: "form-control" %>
+    </p>
+    <%= f.submit class: "btn btn-block " %>
+  <% end %>
+</figure>

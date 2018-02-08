@@ -1,15 +1,17 @@
-<h1>Companies</h1>
+<section class="well">
+  <h4>Companies</h4>
+</section>
 
-<ul >
+<div class="card-container">
   <% @companies.each do |company| %>
-    <li class=company_<%= company.id %>>
-      <%= link_to company.name, company_path(company) %>
-      <%= link_to "Edit", edit_company_path(company) %>
-      <%= link_to "Delete", company_path(company), method: "delete" %>
-    </li>
+    <figure class="well card company_<%= company.id %>">
+      <h4><%= link_to company.name, company_path(company) %></h4>
+      <button><%= link_to "Edit", edit_company_path(company) %></button>
+      <button><%= link_to "Delete", company_path(company), method: "delete" %></button>
+      <button><%= link_to "Create New Job at #{company.name}", new_company_job_path(company) %></button>
+    </figure>
   <% end %>
-</ul>
+</div>
 
-<p>
-  <%= link_to "Create a New Company", new_company_path %>
-</p>
+
+<h4><button><%= link_to "Create a New Company", new_company_path %></button></h4>
