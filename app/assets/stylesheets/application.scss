@@ -1,0 +1,144 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville|Raleway');
+
+$primary-font: 'Libre Baskerville', serif;
+$secondary-font: 'Raleway', sans-serif;
+$sailor-blue: #2E4A62;
+$harbor-mist: #B4B7BA;
+$coconut-milk: #F0EDE5;
+$warm-sand: #C0AB8E;
+$well-border: 5px double $sailor-blue;
+$button-border: 1px solid $harbor-mist;
+
+.row.content {
+  height: 1000px;
+}
+
+body {
+  background-color: $coconut-milk;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: space-around;
+  margin-left: 20%;
+}
+
+h1 {
+  font-family: $secondary-font;
+  text-align: center;
+}
+
+h4 {
+  font-family: $primary-font;
+  text-align: center;
+}
+
+h5 {
+  font-family: $secondary-font;
+  font-size: 18px;
+}
+
+a, p, td {
+  color: $sailor-blue;
+  font-family: $secondary-font;
+}
+
+.sidenav {
+  background-color: $sailor-blue;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+  h2 {
+    color: $coconut-milk;
+    font-family: $secondary-font;
+  }
+  a {
+    font-family: $secondary-font;
+    color: $harbor-mist;
+    font-size: 20px;
+  }
+  li {
+    padding: 20px;
+  }
+}
+
+.well {
+  display: flex;
+  justify-content: center;
+  border: $well-border;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  .card {
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    a {
+      align-self: flex-end;
+    }
+  }
+}
+
+.form-group {
+  min-height: 300px;
+  min-width: 800px;
+  align-items: center;
+}
+
+.company-show {
+  display: flex;
+  justify-content: space-between;
+  .company-contacts {
+    display: flex;
+    flex-direction: column;
+    margin: {
+      left: 50px;
+      top: 150px;
+    }
+  }
+}
+
+.about-job {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn, button {
+  background-color: $coconut-milk;
+  color: $sailor-blue;
+  font-family: $secondary-font;
+  border: $button-border;
+}
+
+td, th {
+  text-align: center;
+}

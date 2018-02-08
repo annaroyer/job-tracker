@@ -11,9 +11,9 @@ describe 'As a user' do
       expect(page).to have_content(@category_1.title)
       expect(page).to have_content(@category_2.title)
 
-      within('.category_2') { click_on 'Delete' }
+      within('.category_2') { click_link 'Delete' }
 
-      within('main') { expect(page).to_not have_content(@category_2.title) }
+      within('.card-container') { expect(page).to_not have_content(@category_2.title) }
       expect(page).to have_content("You deleted #{@category_2.title} category")
       expect(page).to have_content(@category_1.title)
     end
@@ -22,9 +22,9 @@ describe 'As a user' do
   context 'when I click delete on a category show page' do
     it 'I can delete that category and return to category index' do
       visit category_path(@category_1)
-      click_on "Delete"
+      click_link "Delete"
 
-      within('main') { expect(page).to_not have_content(@category_1.title) }
+      within('.card-container') { expect(page).to_not have_content(@category_1.title) }
       expect(page).to have_content("You deleted #{@category_1.title} category")
       expect(page).to have_content(@category_2.title)
     end

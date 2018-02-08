@@ -4,10 +4,6 @@
       <li><%= error %></li>
     <% end %>
   </ul>
-  <p>
-    <%= f.text_area :content %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
+  <h4><%= f.text_area :content, class: "form-control" %></h4>
+  <p><%= f.submit class: "btn  btn-block" %></p>
 <% end %>

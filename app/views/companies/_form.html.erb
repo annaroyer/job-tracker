@@ -1,14 +1,12 @@
-<%= form_for @company do |f| %>
-<ul>
-  <% @company.errors.full_messages.each do |error| %>
-      <li><%= error %></li>
+<figure class="well form-group">
+  <%= form_for @company do |f| %>
+    <ul>
+      <% @company.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+      <% end %>
+    </ul>
+    <h5><%= f.label :name %></h5>
+    <p><%= f.text_field :name %></p>
+    <p><%= f.submit %></p>
   <% end %>
-</ul>
-<p>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-</p>
-<p>
-  <%= f.submit %>
-</p>
-<% end %>
+</figure>

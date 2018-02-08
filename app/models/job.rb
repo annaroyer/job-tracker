@@ -2,7 +2,7 @@ class Job < ApplicationRecord
   validates :title, :level_of_interest, :city, presence: true
   belongs_to :company
   belongs_to :category, optional: true
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   def self.attribute_alias
     {location: 'city', interest: 'level_of_interest'}

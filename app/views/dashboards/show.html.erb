@@ -1,54 +1,47 @@
-<h1>Jobs by Interest Level</h1>
-<table>
-  <tr>
-    <td>
-      Interest Level
-    </td>
-    <td>
-      Job Count
-    </td>
-  </tr>
-    <% @jobs.by_interest_level.each do |interest, count| %>
-      <tr>
-        <td>
-          <%= interest %>
-        </td>
-        <td>
-          <%= count %>
-        </td>
-      </tr>
-    <% end %>
-</table>
+<section class="well">
+  <h4>Dashboard</h4>
+</section>
 
-<h1>Jobs by Location</h1>
-<table>
-  <tr>
-    <td>
-      City
-    </td>
-    <td>
-      Job Count
-    </td>
-  </tr>
-    <% @jobs.by_location.each do |location, count| %>
+<section class="card-container">
+<figure class="card">
+  <h1>Jobs by Interest Level</h1>
+  <table class="table">
+    <thead>
       <tr>
-        <td>
-          <%= link_to location, "/jobs/?location=#{location}" %>
-        </td>
-        <td>
-          <%= count %>
-        </td>
+        <th>Interest Level</th>
+        <th>Job Count</th>
       </tr>
-    <% end %>
-</table>
-<h1>Top 3 Companies</h1>
-<ol>
-<% @top_companies.each do |company| %>
-  <li>
+    </thead>
+      <% @jobs.by_interest_level.each do |interest, count| %>
+        <tr>
+          <td><%= interest %></td>
+          <td><%= count %></td>
+        </tr>
+      <% end %>
+  </table>
+</figure>
+
+<figure class="card">
+  <h1>Jobs by Location</h1>
+  <table class="table">
+    <tr>
+      <th>City</th>
+      <th>Job Count</th>
+    </tr>
+      <% @jobs.by_location.each do |location, count| %>
+        <tr>
+          <td><%= link_to location, "/jobs/?location=#{location}" %></td>
+          <td><%= count %></td>
+        </tr>
+      <% end %>
+  </table>
+</figure>
+
+<figure class="card about-job">
+  <h1>Top 3 Companies</h1>
+  <% @top_companies.each do |company| %>
     <h4><%= company.name %></h4>
-    <p>
-      Average Interest Level: <%= company.average_interest %>
-    </p>
-  </li>
-  <% end %>
-</ol>
+    <p>Average Interest Level: <%= company.average_interest %></p>
+    <% end %>
+  </section>
+</figure>

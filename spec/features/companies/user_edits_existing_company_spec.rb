@@ -5,7 +5,7 @@ describe 'As a user' do
   context'when I visit companies index and click edit on a company' do
     scenario "I can see a form prepopulated with that company's information" do
       visit companies_path
-      click_on 'Edit'
+      click_link 'Edit'
 
       expect(page).to have_field('Name', with: @company.name)
     end

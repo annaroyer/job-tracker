@@ -10,7 +10,7 @@ describe 'As a user' do
       within('.company_1') { click_link 'Delete' }
 
       expect(page).to have_content("#{@company.name} was successfully deleted!")
-      within('main') { expect(page).to_not have_content(@company.name) }
+      within('.card-container') { expect(page).to_not have_content(@company.name) }
     end
   end
 end

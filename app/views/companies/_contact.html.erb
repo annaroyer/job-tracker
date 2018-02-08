@@ -1,7 +1,5 @@
-<h1><%= contact.full_name %></h1>
-<p>
-  <%= contact.position %>
-</p>
-<p>
-  <%=  link_to contact.email, "mailto:#{contact.email}" %>
-</p>
+<figure class="well card">
+  <h4><%= contact.full_name %></h4>
+  <p><%= contact.position %></p>
+  <p><%=  link_to contact.email, "mailto:#{contact.email}" %></p>
+</figure>

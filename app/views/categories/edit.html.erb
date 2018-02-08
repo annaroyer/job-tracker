@@ -1,3 +1,10 @@
-<h1>Update <%= @category.title %></h1>
+<section class="well">
+  <h1>Update <%= @category.title %></h1>
+</section>
 
-<%= render partial: 'form' %>
+<div class="card-container">
+  <%= render partial: 'form' %>
+</div>
+
+<h4><button><%= link_to "<< Back To Categories", categories_path %></button></h4>
+<h4><button><%= link_to "<< Back To #{@category.title}", category_path(@category) %></button></h4>

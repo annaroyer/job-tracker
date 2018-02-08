@@ -1,12 +1,15 @@
-<h1><%= @category.title %></h1>
-<ul>
+<section class="well">
+  <h1><%= @category.title %></h1>
+</section>
+<div class="card-container">
   <% @category.jobs.each do |job| %>
-  <li>
-    <%= link_to job.title, job_path(job.company, job) %>
-  </li>
+  <figure class="well card job_<%= job.id %>">
+    <h4><%= link_to job.title, job_path(job.company, job) %></h4>
+    <button><%= link_to "Delete", job_path(job), method: "delete", data: {confirm: 'Are you sure?'} %></button>
+    <button><%= link_to "Edit", edit_job_path(job) %></button>
+  </figure>
   <% end %>
-</ul>
-<ul>
-  <li><%= link_to "Delete", category_path(@category), method: "delete", data: {confirm: 'Are you sure?'} %></li>
-  <li><%= link_to "Edit", edit_category_path(@category) %></li>
-</ul>
+</div>
+
+<button><%= link_to "Delete", category_path(@category), method: "delete", data: {confirm: 'Are you sure?'} %></button>
+<button><%= link_to "Edit", edit_category_path(@category) %></button>
