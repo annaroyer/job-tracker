@@ -13,12 +13,22 @@ describe Category, type: :model do
 
       expect(category).to be_valid
     end
+  end
 
+  describe 'uniqueness' do
     it 'has a unique name' do
       Category.create!(title: 'Education')
       category = Category.new(title: 'Education')
 
       expect(category).to be_invalid
+    end
+  end
+
+  describe 'relationships' do
+    it 'has many jobs' do
+      category = Category.create(title: 'Education')
+
+      expect(category).to respond_to(:jobs)
     end
   end
 end

@@ -11,13 +11,9 @@ describe 'As a user' do
       expect(page).to have_content(@category_1.title)
       expect(page).to have_content(@category_2.title)
 
-      within '.category_2' do
-        click_on 'Delete'
-      end
+      within('.category_2') { click_on 'Delete' }
 
-      within 'ul' do
-        expect(page).to_not have_content(@category_2.title)
-      end
+      within('main') { expect(page).to_not have_content(@category_2.title) }
       expect(page).to have_content("You deleted #{@category_2.title} category")
       expect(page).to have_content(@category_1.title)
     end
@@ -28,9 +24,7 @@ describe 'As a user' do
       visit category_path(@category_1)
       click_on "Delete"
 
-      within 'li' do
-        expect(page).to_not have_content(@category_1.title)
-      end
+      within('main') { expect(page).to_not have_content(@category_1.title) }
       expect(page).to have_content("You deleted #{@category_1.title} category")
       expect(page).to have_content(@category_2.title)
     end

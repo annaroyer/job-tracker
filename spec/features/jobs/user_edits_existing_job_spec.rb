@@ -4,7 +4,7 @@ describe 'As a user' do
   context 'when I visit company jobs page and click edit on a job'
   before(:each) { @job = create(:job) }
     scenario 'I can see a form prepopulated with the previous job information' do
-      visit company_jobs_path(@job.company, @job)
+      visit company_path(@job.company)
       click_on 'Edit'
 
       expect(page).to have_field('Title', with: @job.title)

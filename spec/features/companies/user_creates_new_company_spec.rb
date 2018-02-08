@@ -1,4 +1,4 @@
-require 'rails_helper'
+ require 'rails_helper'
 
 describe 'As a user' do
   context "when I visit a new company form and fill in the information" do

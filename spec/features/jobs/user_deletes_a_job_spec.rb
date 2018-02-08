@@ -6,7 +6,7 @@ describe 'As a user' do
       company = create(:company)
       job = create(:job, company: company)
 
-      visit company_jobs_path(company)
+      visit company_path(company)
       expect(page).to have_link(job.title)
       click_on 'Delete'
 
@@ -23,7 +23,7 @@ describe 'As a user' do
       expect(page).to have_content(job.title)
       click_on 'Delete'
 
-      expect(current_path).to eq(company_jobs_path(job.company))
+      expect(current_path).to eq(company_path(job.company))
       expect(page).to have_content("You deleted #{job.title} job at #{job.company.name}")
       expect(page).to_not have_link(job.title)
     end

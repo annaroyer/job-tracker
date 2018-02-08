@@ -22,11 +22,19 @@ $harbor-mist: #B4B7BA
 $coconut-milk: #F0EDE5
 $warm-sand: #C0AB8E
 
-.navbar
+.navbar, .sidebar-sticky
   background-color: $sailor-blue
+
+.sidebar-sticky
+  position: fixed
+  top: 45px
+  bottom: 0
+  left: 0
+  width: 15%
 
 h1
   font: 100% $primary-font
+  font-size: 2em
 
 .card-container
   display: flex
@@ -47,4 +55,10 @@ h1
   justify-content: space-between
 
 body
-  background-color: $harbor-mist
+  background-color: $coconut-milk
+
+.main-content
+  display: flex
+  flex-direction: column
+  align-items: center
+  margin-top: 50px

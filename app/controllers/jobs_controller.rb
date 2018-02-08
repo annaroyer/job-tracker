@@ -1,10 +1,10 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
-  before_action :set_company, only: [:new, :create, :index]
+  before_action :set_company, only: [:new, :create]
   before_action :set_categories, only: [:new, :create, :edit]
 
   def index
-    @jobs = @company.jobs
+    @jobs = Job.sort(params[:sort])
   end
 
   def new
@@ -37,7 +37,7 @@ class JobsController < ApplicationController
   def destroy
     @job.destroy
     flash[:success] = "You deleted #{@job.title} job at #{@job.company.name}"
-    redirect_to company_jobs_path(@job.company)
+    redirect_to company_path(@job.company)
   end
 
   private
