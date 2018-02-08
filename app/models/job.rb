@@ -5,11 +5,12 @@ class Job < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   def self.attribute_alias
-    {location: 'city', interest: 'level_of_interest'}
+    {'location' => 'city', 'interest' =>'level_of_interest'}
   end
 
   def self.sort(parameter)
     order(attribute_alias[parameter])
+    # binding.pry
   end
 
   def self.by_interest_level

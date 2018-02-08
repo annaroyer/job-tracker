@@ -2,6 +2,9 @@
   <h4>Jobs</h4>
 </section>
 
+<h4><button><%= link_to "Sort By Location", '/jobs/?sort=location' %></button></h4>
+<h4><button><%= link_to "Sort By Level of Interest", '/jobs/?sort=interest' %></button></h4>
+
 <div class="card-container">
   <%= render partial: 'job', collection: @jobs %>
 </div>
