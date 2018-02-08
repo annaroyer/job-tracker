@@ -21,7 +21,7 @@ describe 'As a user' do
 
       expect(current_path).to eq(category_path(@category))
       expect(page).to have_content('You edited Web Development category')
-      within 'h1' do
+      within 'h4' do
         expect(page).to have_content('Web Development')
       end
     end

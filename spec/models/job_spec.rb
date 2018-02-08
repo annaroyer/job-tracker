@@ -24,8 +24,8 @@ describe Job do
     end
     describe '.sort' do
       it 'sorts all jobs by location or interest level' do
-        expect(Job.sort(:location)).to eq([@job_4, @job_2, @job_3, @job_1])
-        expect(Job.sort(:interest)).to eq([@job_3, @job_2, @job_4, @job_1])
+        expect(Job.sort('location')).to eq([@job_4, @job_2, @job_3, @job_1])
+        expect(Job.sort('interest')).to eq([@job_3, @job_2, @job_4, @job_1])
       end
     end
 

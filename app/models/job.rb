@@ -10,7 +10,6 @@ class Job < ApplicationRecord
 
   def self.sort(parameter)
     order(attribute_alias[parameter])
-    # binding.pry
   end
 
   def self.by_interest_level
