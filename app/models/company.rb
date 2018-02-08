@@ -3,7 +3,9 @@ class Company < ApplicationRecord
   has_many :jobs, dependent: :destroy
   has_many :contacts, dependent: :destroy
 
-  def average_interest_level
-    jobs.average(:level_of_interest)
+  def self.top_average_interest_level
+    jobs
+    .group(:id)
+    .average(:level_of_interest)
   end
 end
