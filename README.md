@@ -1,5 +1,17 @@
 # Job Tracker
 
+This is an application for a user to keep track of jobs they are interested in applying for.
+
+## To View This Application
+
+* Clone down this repository
+* Change directories into job-tracker
+* In your terminal run: 
+    * bundle 
+    * rake db:setub
+    * rails s
+* open a browser window and visit localhost:3000
+
 ## Learning Goals
 
 * Use migrations to create tables with different data types including indexed foreign keys
